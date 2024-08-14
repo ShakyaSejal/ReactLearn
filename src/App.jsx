@@ -1,8 +1,6 @@
 
 import './App.css'
-import Counter from './Counter'
-import Login from './login'
-import Register from './Register'
+import Path from './Route'
 
 // import Counter from './Counter'
 
@@ -10,9 +8,7 @@ function App() {
 
   return (
     <>
-      <Register/>
-      <Login/>
-      <Counter/>
+     <Path/>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigation } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -7,12 +7,14 @@ const Login = () => {
   // const [username , setUsername]=useState("");
   // const [username , setUsername]=useState("");
   // const navigate = useNavigation()
+  const path = useNavigate()
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = JSON.parse(localStorage.getItem("user"));
     if(userData.husername === username && userData.password === password){
+      path("/")
     }
   };
 

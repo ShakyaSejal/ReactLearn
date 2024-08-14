@@ -1,32 +1,70 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
+  const navigate=useNavigate();
+  const [error, setError] =useState("");
 
  const handleSubmit = (e) => {
     e.preventDefault()
     const user = {
-        husername : username,
+        firstname : firstname,
+        lastname : lastname,
         email : email,
         password : password,
     };
-    console.log("user",user);
     localStorage.setItem("user",JSON.stringify(user))
+    if (!firstname) {
+      setError("firstname cannot be empty");
+      return;
+    }
+    if (!lastname) {
+      setError("lastname cannot be empty");
+      return;
+    }
+    if (!email) {
+      setError("email cannot be empty");
+      return;
+    }
+    if (!password) {
+      setError("password cannot be empty");
+      return;
+    }
+    if (password !== confirm_password) {
+      setError("Passwords do not match");
+      return;
+    }
+   
+
+    navigate('/login')
+
+
   };
   return (
     <>
       <div>
         <form className="flex flex-col justify-center" onSubmit={handleSubmit}>
-          <label htmlFor="username">username</label>
+          <label htmlFor="firstname">firstname</label>
           <input 
           type="username" 
           className=" bg-gray-400" 
-          value={username} 
+          value={firstname} 
           onChange={(e)=>{
-                setUsername(e.target.value)
+                setFirstname(e.target.value)
+          }}
+          />
+          <label htmlFor="lastname">lastname</label>
+          <input 
+          type="lastname" 
+          className=" bg-gray-400" 
+          value={lastname} 
+          onChange={(e)=>{
+                setLastname(e.target.value)
           }}
           />
 
@@ -68,6 +106,10 @@ const Register = () => {
             SUBMIT
           </button>
         </form>
+        {error &&(
+          <p className="text-red-500">{error}</p>
+        )}
+
       </div>
     </>
   );
