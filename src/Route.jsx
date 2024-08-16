@@ -7,7 +7,8 @@ const Path = () => {
   return (
  
     <Routes>
-        <Route path='/register' element={<Register/>} />
+
+        <Route path='/' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
 
     </Routes>

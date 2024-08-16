@@ -1,4 +1,5 @@
 
+import { Toaster } from 'react-hot-toast'
 import './App.css'
 import Path from './Route'
 
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
      <Path/>
+     <Toaster/>
     </>
   )
 }
